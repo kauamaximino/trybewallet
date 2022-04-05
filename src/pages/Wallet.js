@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
 import { actionRequestCoins } from '../actions/index';
+import Forms from '../components/Forms';
 
 class Wallet extends React.Component {
   componentDidMount = async () => {
@@ -14,14 +15,11 @@ class Wallet extends React.Component {
     return (
       <div>
         <Header />
+        <Forms />
       </div>
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-  currencies: state.wallet.currencies,
-});
 
 const mapDispatchToProps = (dispatch) => ({
   RequestCoins: () => dispatch(actionRequestCoins()),
@@ -31,4 +29,4 @@ Wallet.propTypes = {
   RequestCoins: PropTypes.function,
 }.isRequired;
 
-export default connect(mapStateToProps, mapDispatchToProps)(Wallet);
+export default connect(null, mapDispatchToProps)(Wallet);
