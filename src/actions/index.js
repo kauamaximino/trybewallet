@@ -17,6 +17,5 @@ export const wallet = (payload) => ({
 export const actionRequestCoins = () => async (dispatch) => {
   const response = await RequestCoins();
   const coinsFilter = Object.keys(response).filter((coin) => coin !== 'USDT');
-  console.log(coinsFilter);
   dispatch(wallet(coinsFilter));
 };
