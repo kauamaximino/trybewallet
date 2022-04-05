@@ -7,19 +7,25 @@ class Forms extends React.Component {
     const { currencies } = this.props;
     return (
       <form>
-        <input
-          type="text"
-          data-testid="value-input"
-          name="value"
-          placeholder="insira seu e-mail"
-        />
+        <label htmlFor="value">
+          Valor:
+          <input
+            type="text"
+            data-testid="value-input"
+            name="value"
+            id="value"
+          />
+        </label>
 
-        <input
-          type="text"
-          data-testid="description-input"
-          name="description"
-          placeholder="Descrição"
-        />
+        <label htmlFor="description">
+          Descrição:
+          <input
+            type="text"
+            data-testid="description-input"
+            name="description"
+            id="description"
+          />
+        </label>
 
         <label htmlFor="coins">
           Moeda

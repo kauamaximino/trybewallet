@@ -6,7 +6,7 @@ import { actionRequestCoins } from '../actions/index';
 import Forms from '../components/Forms';
 
 class Wallet extends React.Component {
-  componentDidMount = async () => {
+  componentDidMount = () => {
     const { RequestCoins } = this.props;
     RequestCoins();
   };

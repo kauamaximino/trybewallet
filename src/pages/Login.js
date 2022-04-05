@@ -29,6 +29,7 @@ class Login extends React.Component {
 
   render() {
     const { email, password } = this.state;
+    const { myUserDispatch } = this.props;
     return (
       <form>
 
@@ -54,7 +55,7 @@ class Login extends React.Component {
           <button
             type="submit"
             disabled={ this.checkedForm() }
-            onClick={ () => this.myUserDispatch(email) }
+            onClick={ () => myUserDispatch(email) }
           >
             Entrar
           </button>
