@@ -1,4 +1,5 @@
-// Coloque aqui suas actions
+import RequestCoins from '../services/EconomiaApi';
+
 export const USER_EMAIL = 'USER_EMAIL';
 
 export const emailUser = (payload) => ({
@@ -6,7 +7,16 @@ export const emailUser = (payload) => ({
   payload,
 });
 
+export const WALLET = 'WALLET';
+
 export const wallet = (payload) => ({
   type: 'WALLET',
   payload,
 });
+
+export const actionRequestCoins = () => async (dispatch) => {
+  const response = await RequestCoins();
+  const coinsFilter = Object.keys(response).filter((coin) => coin !== 'USDT');
+  console.log(coinsFilter);
+  dispatch(wallet(coinsFilter));
+};
