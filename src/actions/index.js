@@ -1,13 +1,12 @@
 import RequestCoins from '../services/EconomiaApi';
 
 export const USER_EMAIL = 'USER_EMAIL';
+export const WALLET = 'WALLET';
 
 export const emailUser = (payload) => ({
   type: USER_EMAIL,
   payload,
 });
-
-export const WALLET = 'WALLET';
 
 export const wallet = (payload) => ({
   type: 'WALLET',
