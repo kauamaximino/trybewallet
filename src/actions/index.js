@@ -3,7 +3,7 @@ import RequestCoins from '../services/EconomiaApi';
 export const USER_EMAIL = 'USER_EMAIL';
 export const WALLET = 'WALLET';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
-export const ASK = 'ASK';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 
 export const emailUser = (payload) => ({
   type: USER_EMAIL,
@@ -17,6 +17,11 @@ export const currencies = (payload) => ({
 
 export const addExpense = (payload) => ({
   type: ADD_EXPENSE,
+  payload,
+});
+
+export const deleteExpense = (payload) => ({
+  type: DELETE_EXPENSE,
   payload,
 });
 

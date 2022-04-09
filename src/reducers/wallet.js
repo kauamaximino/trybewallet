@@ -1,5 +1,5 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
-import { WALLET, ADD_EXPENSE } from '../actions';
+import { WALLET, ADD_EXPENSE, DELETE_EXPENSE } from '../actions';
 
 const INITIAL_STATE = {
   currencies: [],
@@ -12,7 +12,7 @@ const calculateTotal = (arrayExpenses) => {
   const expenses = arrayExpenses.map((expense) => expense.value
     * expense.exchangeRates[expense.currency].ask);
 
-  return expenses.reduce((acc, curr) => acc + curr).toFixed(2);
+  return expenses.reduce((acc, curr) => acc + curr, 0).toFixed(2);
 };
 
 const walletReducer = (state = INITIAL_STATE, action) => {
@@ -25,6 +25,15 @@ const walletReducer = (state = INITIAL_STATE, action) => {
       ...state,
       expenses: [...state.expenses, action.payload],
       total: calculateTotal([...state.expenses, action.payload]),
+    };
+
+  case DELETE_EXPENSE:
+    return {
+      ...state,
+      expenses: state.expenses
+        .filter((expense) => expense.id !== action.payload),
+      total: calculateTotal(state.expenses
+        .filter((expense) => expense.id !== action.payload)),
     };
 
   default: return state;
