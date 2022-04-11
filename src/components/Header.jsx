@@ -1,8 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { initialValue } from '../actions';
 
 class Header extends React.Component {
+  componentDidMount() {
+    const { initial } = this.props;
+    initial();
+  }
+
   render() {
     const { email, total } = this.props;
     return (
@@ -21,8 +27,12 @@ const mapStateToProps = (state) => ({
   expense: state.wallet.expenses,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  initial: (expense) => dispatch(initialValue(expense)),
+});
+
 Header.propTypes = {
   email: PropTypes.string,
 }.isRequired;
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
